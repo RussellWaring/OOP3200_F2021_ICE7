@@ -26,8 +26,8 @@ public class Program
 
     /**
      * This function builds an array of Person objects by instantiating NUM_OF_PEOPLE Person objects
-     * @param people an array of Person objects
-     */
+     * param people an array of Person objects
+
     public static void buildPersonArray(Person[] people)
     {
         for (int i = 0; i < NUM_OF_PEOPLE; i++)
@@ -51,6 +51,15 @@ public class Program
             people.add(new Person());
         }
     }
+     */
+
+    public static void buildStudentLinkedList(LinkedList<Student> students)
+    {
+        for (int i = 0; i < NUM_OF_PEOPLE; i++)
+        {
+            students.add(new Student());
+        }
+    }
 
     /**
      * The entry point for the program
@@ -62,14 +71,17 @@ public class Program
         // ArrayList<Person> people = new ArrayList<Person>(); // creates a new empty list of Person object shape
         //buildPersonArrayList(people);
 
-        LinkedList<Person> people = new LinkedList<Person>();
-        buildPersonLinkedList(people);
+        // LinkedList<Person> people = new LinkedList<Person>();
+        // var people = new LinkedList<Person>();
+        // buildPersonLinkedList(people);
 
         // One way of initializing custom objects: Person[] people = {new Person("Mike", 27), new Person("Chuck", 48)};
         // Person[] people = {new Person()}; // Make 'defaults' by using overloaded constructors
         // Person [] people = new Person[NUM_OF_PEOPLE]; // allocates empty spaces, but does not instantiate anything
         // buildPersonArray(people);
 
+        var students = new LinkedList<Student>();
+        buildStudentLinkedList(students);
 
         System.out.println("Hello, World!");
 
@@ -85,23 +97,19 @@ public class Program
         // Step 2. use the Scanner object to get the "next" line of data in this case a String value
         String name = inputObject.nextLine();
 
+        System.out.print("Enter your student id: ");
+        String studentID = inputObject.nextLine();
+
         System.out.print("Enter your age: ");
         int age = inputObject.nextInt(); // converts from string, to input, to int
 
-        Person person = new Person(name, age); // using name value
+        Student student = new Student(name, age, studentID); // using name value
         // person.SaysHello();
         //System.out.println(person.toString()); // can use explicitly
         // System.out.println(person);
 
-        people.set(0, person); // replaces data inside the 0th index. Works for LinkedList or ArrayList
-
-        // System.out.println("The First Person is: " + people[0].getName());
-        // System.out.println("The First Person is: " + people.get(0).getName()); // ArrayList & LinkedList
-        // LinkedList contains more methods than ArrayList. Allows us to go back-and-forth.
-        // ArrayList like a vector in C++.
-
-        System.out.println(people);
-
-        people.get(0).SaysHello(); // how to use object stored inside LinkedList or ArrayList
+        students.set(0, student); // replaces data inside the 0th index. Works for LinkedList or ArrayList
+        students.get(0).SaysHello(); // how to use object stored inside LinkedList or ArrayList
+        students.get(0).Studies(); // calling method from Student class
     }
 }
